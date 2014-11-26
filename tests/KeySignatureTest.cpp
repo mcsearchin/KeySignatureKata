@@ -108,16 +108,22 @@ TEST(KeySignatureTest, WhenAMinorKeySignatureIsCreatedWithUptoSevenFlatsThenItHa
 {
 	KeySignature keyOfDMinor(Flat, 1, Minor);
 	EXPECT_EQ("D", keyOfDMinor.GetTonic());
+	
 	KeySignature keyOfGMinor(Flat, 2, Minor);
 	EXPECT_EQ("G", keyOfGMinor.GetTonic());
+	
 	KeySignature keyOfCMinor(Flat, 3, Minor);
 	EXPECT_EQ("C", keyOfCMinor.GetTonic());
+	
 	KeySignature keyOfFMinor(Flat, 4, Minor);
 	EXPECT_EQ("F", keyOfFMinor.GetTonic());
+	
 	KeySignature keyOfBFlatMinor(Flat, 5, Minor);
 	EXPECT_EQ("Bb", keyOfBFlatMinor.GetTonic());
+	
 	KeySignature keyOfEFlatMinor(Flat, 6, Minor);
 	EXPECT_EQ("Eb", keyOfEFlatMinor.GetTonic());
+	
 	KeySignature keyOfAFlatMinor(Flat, 7, Minor);
 	EXPECT_EQ("Ab", keyOfAFlatMinor.GetTonic());	
 }
