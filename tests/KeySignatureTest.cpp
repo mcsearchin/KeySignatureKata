@@ -2,7 +2,9 @@
 #include "KeySignature.h"
 #include <string>
 
-TEST(KeySignatureTest, WhenAKeySignatureIsCreatedAllAttributesCanBeRetrieved)
+using namespace KeySignatureKata;
+
+TEST(KeySignatureTest, WhenAKeySignatureIsCreatedThenAllAttributesCanBeRetrieved)
 {
 	KeySignature key(Sharp, 2, Major);
 	

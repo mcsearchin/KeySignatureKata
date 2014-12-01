@@ -1,9 +1,15 @@
 #include "KeySignature.h"
 
-const string KeySignature::PITCH_NAMES_ASCENDING[] = {"C", "C#", "D", "D#", "E", "E#", "F#", "G", "G#", "A", "A#", "B"};
-const string KeySignature::PITCH_NAMES_DESCENDING[] = {"C", "Cb", "Bb", "A", "Ab", "G", "Gb", "F", "Fb", "Eb", "D", "Db"};
+using namespace KeySignatureKata;
 
-KeySignature::KeySignature(SymbolType symbolType, int numberOfSymbols, Tonality tonality) 
+const int KeySignature::FIFTH_INTERVAL = 7;
+const int KeySignature::OCTAVE_INTERVAL = 12;
+const int KeySignature::RELATIVE_MINOR_ASCENDING_INTERVAL = 9;
+const int KeySignature::RELATIVE_MINOR_DESCENDING_INTERVAL = 3;
+const std::string KeySignature::PITCH_NAMES_ASCENDING[] = {"C", "C#", "D", "D#", "E", "E#", "F#", "G", "G#", "A", "A#", "B"};
+const std::string KeySignature::PITCH_NAMES_DESCENDING[] = {"C", "Cb", "Bb", "A", "Ab", "G", "Gb", "F", "Fb", "Eb", "D", "Db"};
+
+KeySignature::KeySignature(const SymbolType& symbolType, const int numberOfSymbols, const Tonality& tonality) 
 	: TheSymbolType(symbolType)
 	, NumberOfSymbols(numberOfSymbols)
 	, TheTonality(tonality)
@@ -29,9 +35,9 @@ Tonality KeySignature::GetTonality()
 	return TheTonality;
 }
 
-string KeySignature::GetTonic()
+std::string KeySignature::GetTonic()
 {
-	string tonic;
+	std::string tonic;
 	if (TheSymbolType == Sharp)
 	{
 		tonic = PITCH_NAMES_ASCENDING[CalculateTonicIndex()];
@@ -44,13 +50,13 @@ string KeySignature::GetTonic()
 	return tonic;
 }
 
-int KeySignature::CalculateTonicIndex() 
+int KeySignature::CalculateTonicIndex()
 {
-	int i = FIFTH_INTERVAL * NumberOfSymbols;
+	int index = FIFTH_INTERVAL * NumberOfSymbols;
 	if (Minor == TheTonality)
 	{
-		i += (TheSymbolType == Sharp) ? RELATIVE_MINOR_ASCENDING_INTERVAL : RELATIVE_MINOR_DESCENDING_INTERVAL;
+		index += (TheSymbolType == Sharp) ? RELATIVE_MINOR_ASCENDING_INTERVAL : RELATIVE_MINOR_DESCENDING_INTERVAL;
 	}
 	
-	return i % OCTAVE_INTERVAL;
+	return index % OCTAVE_INTERVAL;
 }
