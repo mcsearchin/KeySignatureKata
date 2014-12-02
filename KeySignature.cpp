@@ -20,22 +20,22 @@ KeySignature::~KeySignature()
 {
 }
 
-SymbolType KeySignature::GetSymbolType()
+SymbolType KeySignature::GetSymbolType() const
 {
 	return TheSymbolType;
 }
 
-int KeySignature::GetNumberOfSymbols()
+int KeySignature::GetNumberOfSymbols() const
 {
 	return NumberOfSymbols;
 }
 
-Tonality KeySignature::GetTonality()
+Tonality KeySignature::GetTonality() const
 {
 	return TheTonality;
 }
 
-std::string KeySignature::GetTonic()
+std::string KeySignature::GetTonic() const
 {
 	std::string tonic;
 	if (TheSymbolType == Sharp)
@@ -50,7 +50,7 @@ std::string KeySignature::GetTonic()
 	return tonic;
 }
 
-int KeySignature::CalculateTonicIndex()
+int KeySignature::CalculateTonicIndex() const
 {
 	int index = FIFTH_INTERVAL * NumberOfSymbols;
 	if (Minor == TheTonality)

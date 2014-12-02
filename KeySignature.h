@@ -21,10 +21,10 @@ namespace KeySignatureKata
 		KeySignature(const SymbolType& symbolType, const int numberOfSymbols, const Tonality& tonality);
 		virtual ~KeySignature();
 
-		SymbolType GetSymbolType();
-		int GetNumberOfSymbols();
-		Tonality GetTonality();
-		std::string GetTonic();
+		SymbolType GetSymbolType() const;
+		int GetNumberOfSymbols() const;
+		Tonality GetTonality() const;
+		std::string GetTonic() const;
 
 	private:
 		static const int FIFTH_INTERVAL;
@@ -34,7 +34,7 @@ namespace KeySignatureKata
 		static const std::string PITCH_NAMES_ASCENDING[];
 		static const std::string PITCH_NAMES_DESCENDING[];
 
-		int CalculateTonicIndex();
+		int CalculateTonicIndex() const;
 
 		SymbolType TheSymbolType;
 		int NumberOfSymbols;
